@@ -1,0 +1,213 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../bower_components/core-selector/core-selector.html">
+
+<link rel="import"
+      href="../bower_components/core-toolbar/core-toolbar.html">
+
+<link rel="import" href="board-pin.html">
+
+<polymer-element name="board-main" noscript>
+    <template>
+        <style>
+            core-header-panel {
+                height: 100%;
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            core-toolbar {
+                background: #03a9f4;
+                color: white;
+            }
+            #tabs {
+                width: 100%;
+                margin: 0;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-transform: uppercase;
+            }
+            .main-head {
+                text-align: center;
+            }
+            .main-head .main-title {
+                font-family: RobotoDraft, sans-serif;
+                font-size: 2.5em;
+                /*color: #00BCD4;*/
+                color: #ffffff;
+                font-weight: lighter;
+            }
+            .main-head img {
+                border-radius: 50%;
+                display: inline-block;
+                overflow: hidden;
+                transform: translateZ(0px);
+            }
+
+            .category-toolbar {
+                height: 100px;
+                z-index: 1;
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+            }
+
+            body /deep/ core-toolbar {
+                background-color: #00bad2;
+                color: #fff;
+                font-size: 24px;
+            }
+
+            .wide.category-list {
+                padding: 4px 0;
+                margin: 0 -4px;
+                overflow-y: hidden;
+            }
+            .category-list {
+                display: block;
+                /*position: absolute;*/
+                top: 100px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 2px 0;
+                margin: 0 -2px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+            .container {
+                width: 100%;
+            }
+
+            .programm {
+                width: 43%;
+            }
+            .passage {
+                width: 29%;
+            }
+            .accomodation {
+                width: 25%;
+            }
+            .knowledge {
+                width: 35%;
+            }
+            .drive {
+                width: 28%;
+            }
+            .matras {
+                width: 34%;
+            }
+
+            .pin-layout {
+                height: 200px;
+            }
+            .pin-img-aria {
+                height: 70%;
+            }
+
+            .pin-layout .title {
+                background-color: aliceblue;
+                text-align: center;
+            }
+
+        </style>
+
+
+
+        <div class="categories-panel" flex="" auto="">
+
+            <core-toolbar class="category-toolbar">
+                <div class="main-head">
+                    <!--img src="/images/1.jpg"-->
+                    <div class="main-title">10 лет Компании в Буковеле</div>
+                </div>
+            </core-toolbar>
+
+            <core-selector class="category-list content wide">
+
+
+                <div class="container" horizontal layout wrap>
+
+
+
+
+                    <board-pin class="programm">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>КРАТКАЯ ПРОГРАММА</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin class="passage">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>ПРОЕЗД</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin class="accomodation">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>ПРОЖИВАНИЕ</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin class="knowledge">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>ОБУЧЕНИЕ</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin class="drive">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>КАТАНИЕ И ПРОКАТ</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin class="matras">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>ПРОГРАММА ДЛЯ ТЕХ, КТО НЕ КАТАЕТСЯ</p></div>
+                        </div>
+                    </board-pin>
+
+
+                </div>
+
+
+            </core-selector>
+        </div>
+
+    </template>
+    <style>
+        html,body {
+            height: 100%;
+            margin: 0;
+            background-color: #E5E5E5;
+            font-family: RobotoDraft, sans-serif;
+            font-size: 15px;
+        }
+    </style>
+
+</polymer-element>

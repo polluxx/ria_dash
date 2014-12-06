@@ -1,0 +1,68 @@
+<link rel="import"
+      href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon/core-icon.html">
+
+<polymer-element name="board-pin" >
+    <template>
+        <style>
+            :host {
+                display: block;
+                position: relative;
+                background-color: white;
+
+                max-width: 100%;
+                font-size: 1.2rem;
+                font-weight: 300;
+                margin: 10px 0px 0px 10px;
+            }
+            .card-header {
+                margin-bottom: 10px;
+            }
+            polyfill-next-selector { content: '.card-header h2'; }
+            .card-header ::content h2 {
+                margin: 0;
+                font-size: 1.8rem;
+                font-weight: 300;
+            }
+            polyfill-next-selector { content: '.card-header img'; }
+            .card-header ::content img {
+                width: 70px;
+                border-radius: 50%;
+                margin: 10px;
+            }
+
+
+            .category-bg-wrapper core-icon {
+                width: 100px;
+                margin: 20px auto;
+                height: 100px
+            }
+            .category-tile-bg {
+                position: absolute!important;
+            }
+            html /deep/ core-icon {
+                display: inline-block;
+                vertical-align: middle;
+                background-repeat: no-repeat;
+                fill: currentcolor;
+                position: relative;
+                height: 24px;
+                width: 24px;
+            }
+        </style>
+
+        <div class="card-header" layout horizontal center>
+            <content select="img"></content>
+            <div class="category-bg-wrapper">
+                <core-icon class="category-tile-bg " icon="{{scores.length === cat.quizzes.length ? 'check' : 'category-icons:' + cat.id}}" fit="" aria-label="knowledge" role="img"><svg viewBox="0 0 256 256" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" fit="" style="pointer-events: none; display: block;"><g><path opacity=".1" fill="#212121" enable-background="new" d="M67.1 44.5c-.2 0-.4 0-.6.1h-8.3v114.10000000000001c.2 4.7 4.1 8.4 8.8 8.4h7v16.9l8.2-5.7 7.5 5.7v-15h55.8v-124.6l-78.4.1z"></path><path fill="#FFF3E0" d="M102.7 113.9h37.1v33.6h-37.1z"></path><path fill="#FF6E40" d="M61.3 42.6c-4.9 0-8.9 4-8.9 8.9v105.3l52.4-9.3c13.1 0 35-15.6 35-35v-69.9h-78.5z"></path><path fill="#C2C2C2" d="M61.3 147.5c-4.9 0-8.9 4-8.9 8.9s4 8.9 8.9 8.9h78.5v-17.7l-78.5-.1z"></path><path fill="#BA68C8" d="M68.3 157v25h1.7l6.3-5.7 6.4 5.7h1.3v-25z"></path><path fill="#FF3D00" d="M114.1 121.6c9.7.5 20-1.8 25.7-7.7.1 15.6-20.3 33.5-33.1 33.6 5-5.1 7.8-15.7 7.4-25.9z"></path><path fill="#26C6DA" d="M103.7 41.6h6.1v124.9h-6.1z"></path><path fill="#00ACC1" d="M103.7 147.7h6.1v18.8h-6.1z"></path><path fill="#F4B400" d="M130.8 190.4c-1.4 1.4-1.4 3.6 0 5l14.9 14.9c1.4 1.4 3.6 1.4 5 0l50.9-50.9c1.4-1.4 1.4-3.6 0-5l-14.9-14.9c-1.4-1.4-3.6-1.4-5 0l-50.9 50.9z"></path><path fill="#E57368" d="M154.9 206l-2.5-2.5-7.4-7.4-9.9-9.9-2.5 2.5-6 6c-1.4 1.4-1.4 3.6 0 5l14.9 14.9c1.4 1.4 3.6 1.4 5 0l6-6 2.4-2.6z"></path><path fill="#F0F0F0" d="M134.614 186.538l4.596-4.596 19.87 19.87-4.596 4.596z"></path><path fill="#FBD199" d="M184.2 137l21.9-2.1-2.1 22z"></path><path fill="#4D4D4D" d="M197.9 135.7l8.2-.8-.8 8.2z"></path><g fill="#FBD199"><path d="M186.7 139.5l-2.5-2.5-3.8 3.8zM190.4 150.7l3.7-3.7-2.5-2.5zM191.6 144.5l-2.5-2.5-3.7 3.7zM186.7 139.5l2.4 2.5-3.7 3.7zM196.6 149.4l-2.5-2.4-3.7 3.7zM200.3 160.6l3.7-3.7-2.5-2.5zM201.5 154.4l-2.4-2.5-3.8 3.8zM196.6 149.4l2.5 2.5-3.8 3.8z"></path></g><path opacity=".1" fill="#424242" enable-background="new" d="M206.1 134.9l-72.1 72.1 7.4 7.4c1.4 1.4 3.6 1.4 5 0l57.6-57.6 2.1-21.9z"></path><path fill="none" d="M0 0h256v256h-256z"></path></g></svg></core-icon>
+            </div>
+        </div>
+        <content></content>
+
+
+
+    </template>
+    <script>
+        Polymer({});
+    </script>
+</polymer-element>

@@ -1,0 +1,27 @@
+{
+  "name": "ria_dash",
+  "version": "0.0.0",
+  "homepage": "https://github.com/polluxx/ria_dash",
+  "authors": [
+    "polluxx <yuriy.kosakivsky@gmail.com>"
+  ],
+  "description": "dashboard",
+  "main": "dash.html",
+  "moduleType": [
+    "es6",
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1",
+    "core-icons": "Polymer/core-icons#~0.5.1",
+    "paper-elements": "Polymer/paper-elements#~0.5.1"
+  }
+}

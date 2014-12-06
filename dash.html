@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <title>Буковель: 10 лет Компании</title>
+
+    <!-- 1. Load platform support before any code that touches the DOM. -->
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import"
+          href="bower_components/font-roboto/roboto.html">
+    <link rel="import"
+          href="bower_components/core-animated-pages/core-animated-pages.html">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <!-- 2. Load the component using an HTML Import -->
+    <link rel="import" href="elements/board-main.html">
+    <link rel="import" href="elements/board-show.html">
+</head>
+<body>
+
+<core-animated-pages selected="{{selected}}" transitions="cross-fade cross-fade-delayed scale-up slide-up slide-up-offscreen slide-down tile-cascade hero-transition" flex="" auto="" on-core-animated-pages-transition-end="{{ transitionEndAction }}" notap="" class="">
+    <board-main></board-main>
+    <board-show></board-show>
+</core-animated-pages>
+</body>
+</html>
