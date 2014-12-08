@@ -1,0 +1,465 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import"
+          href="../bower_components/core-animated-pages/core-animated-pages.html">
+		  
+    <link rel="import" href="board-main.html">
+    <link rel="import" href="board-show.html">
+	<link rel="import" href="../bower_components/core-icon/core-icon.html">
+	<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/core-selector/core-selector.html">
+
+<link rel="import"
+      href="../bower_components/core-toolbar/core-toolbar.html">
+	  
+	  <link href="../bower_components/core-icons/av-icons.html" rel="import">
+
+<link rel="import" href="board-pin.html">
+
+	  <link href="../bower_components/core-icons/av-icons.html" rel="import">
+  <link href="../bower_components/paper-fab/paper-fab.html" rel="import">
+
+  <link href="../bower_components/core-animated-pages/transitions/slide-up.html" rel="import">
+  <link href="../bower_components/core-animated-pages/transitions/list-cascade.html" rel="import">
+	
+
+<polymer-element name="board-global">
+	
+
+
+    <template>
+	<style>
+	core-animated-pages {
+        height: 100%;
+      }
+
+      section {
+        overflow: hidden;
+      }
+
+      .fab {
+        position: absolute;
+        fill: #fff;
+      }
+
+      .fab-0 {
+        bottom: 50px;
+        right: 24px;
+      }
+
+      .fab-1 {
+        top: 210px;
+        right: 24px;
+      }
+
+      paper-fab {
+        background-color: #ff4081;
+      }
+
+      .top {
+        background-color: #ffff8d;
+      }
+
+      .top-image {
+        background: url(quiz1-intro.png);
+        height: 287px;
+        width: 202px;
+      }
+
+      .bottom {
+        box-sizing: border-box;
+        position: relative;
+        height: 80px;
+        background-color: #ffeb3b;
+        padding: 24px;
+        color: #fff;
+        font-size: 32px;
+      }
+
+      .tall-toolbar {
+        box-sizing: border-box;
+        height: 240px;
+        position: relative;
+        color: #fff;
+        padding: 48px;
+        font-size: 48px;
+      }
+
+      .tall-toolbar.categories {
+        background-color: #00bbd3;
+        margin-bottom: 2px;
+      }
+
+      .tall-toolbar.questions {
+        background-color: #ffeb3b;
+      }
+
+      .middle {
+        background-color: #fafafa;
+        color: #3f3f3f;
+        padding: 24px 48px;
+        font-size: 24px;
+        line-height: 1.5;
+      }
+
+      .footer {
+        height: 80px;
+      }
+
+      .avatar {
+        height: 80px;
+        width: 80px;
+        background-color: #ff80ab;
+      }
+
+      .footer-right, .score {
+        border-top: 1px solid #ccc;
+        background-color: #fff;
+        padding: 30px;
+      }
+
+      .tile {
+        box-sizing: border-box;
+        float: left;
+        height: 200px;
+        width: 49%;
+        margin: 3px;
+      }
+
+      .tile-bottom {
+        padding: 8px;
+        color: #fff;
+      }
+	  
+	  
+		  [unresolved] {
+			opacity: 0;
+			/* other custom styles for unresolved elements */
+		  }
+            core-header-panel {
+                height: 100%;
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            core-toolbar {
+                background: #03a9f4;
+                color: white;
+            }
+            #tabs {
+                width: 100%;
+                margin: 0;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                text-transform: uppercase;
+            }
+            .main-head {
+                text-align: center;
+            }
+            .main-head .main-title {
+                font-family: RobotoDraft, sans-serif;
+                font-size: 2.5em;
+                /*color: #00BCD4;*/
+                color: #ffffff;
+                font-weight: lighter;
+            }
+            .main-head img {
+                border-radius: 50%;
+                display: inline-block;
+                overflow: hidden;
+                transform: translateZ(0px);
+            }
+
+            .category-toolbar {
+                height: 100px;
+                z-index: 1;
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+            }
+
+            body /deep/ core-toolbar {
+                background-color: #00bad2;
+                color: #fff;
+                font-size: 24px;
+            }
+
+            .wide.category-list {
+                padding: 4px 0;
+                margin: 0 -4px;
+                overflow-y: hidden;
+            }
+            .category-list {
+                display: block;
+                /*position: absolute;*/
+                top: 100px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 2px 0;
+                margin: 0 -2px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+            .container {
+                width: 100%;
+            }
+
+            .programm {
+                width: 43%;
+            }
+            .passage {
+                width: 29%;
+            }
+            .accomodation {
+                width: 25%;
+            }
+            .knowledge {
+                width: 35%;
+            }
+            .drive {
+                width: 28%;
+            }
+            .matras {
+                width: 34%;
+            }
+
+            .pin-layout {
+                height: 200px;
+            }
+            .pin-img-aria {
+                height: 70%;
+            }
+
+            .pin-layout .title {
+                background-color: aliceblue;
+                text-align: center;
+				opacity: 0.8;
+            }
+			
+			board-pin {
+				transition: box-shadow 0.4s;
+			}
+			
+			board-pin:hover {
+				z-index: 1;
+				
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+			}
+
+        
+	  
+	</style>
+		<core-animated-pages selected="{{page}}" transitions="hero-transition slide-up slide-down cross-fade list-cascade" on-core-animated-pages-transition-end="{{complete}} class="">
+			<!--board-main></board-main-->
+			<!--board-show></board-show-->
+			<section layout vertical>
+        <div class="categories-panel" flex="" auto="">
+
+            <core-toolbar class="category-toolbar">
+                <div class="main-head">
+                    <!--img src="/images/1.jpg"-->
+                    <div class="main-title">10 лет Компании в Буковеле</div>
+                </div>
+            </core-toolbar>
+
+            <core-selector class="category-list content wide">
+
+
+                <div class="container" horizontal layout wrap>
+
+
+
+					
+                    <board-pin self-stretch class="programm" id="programm" hero-id="programm-front" hero style="background-color:#ffff8d;" layout vertical on-tap="{{transition}}">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>КРАТКАЯ ПРОГРАММА</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin self-stretch id="passage" class="passage" hero-id="passage-front" hero style="background-color:#ffff8d;" layout vertical on-tap="{{transition}}">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon icon="fruit:cherry" width="70" height="70" fit="" aria-label="knowledge" ></core-icon></div>
+
+                            <div class="title"><p>ПРОЕЗД</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin self-stretch id="accomodation" class="accomodation" hero-id="accomodation-front" hero style="background-color:#ffff8d;" layout vertical on-tap="{{transition}}">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>ПРОЖИВАНИЕ</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin self-stretch id="knowledge" class="knowledge" hero-id="knowledge-front" hero style="background-color:#ffff8d;" layout vertical on-tap="{{transition}}" >
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>ОБУЧЕНИЕ</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin  self-stretch id="drive" class="drive" hero-id="drive-front" hero style="background-color:#ffff8d;" layout vertical on-tap="{{transition}}">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>КАТАНИЕ И ПРОКАТ</p></div>
+                        </div>
+                    </board-pin>
+
+                    <board-pin  self-stretch id="matras" class="matras" hero-id="matras-front" hero style="background-color:#ffff8d;" layout vertical on-tap="{{transition}}">
+                        <!--img width="70" height="70"
+                             src="../images/avatar-07.svg"-->
+                        <div vertical layout class="pin-layout">
+                            <div class="pin-img-aria"><core-icon width="70" height="70" fit="" aria-label="knowledge" role="img"></core-icon></div>
+
+                            <div class="title"><p>ПРОГРАММА ДЛЯ ТЕХ, КТО НЕ КАТАЕТСЯ</p></div>
+                        </div>
+                    </board-pin>
+
+
+                </div>
+
+
+            </core-selector>
+        </div>
+		</section>
+			
+			
+			
+	  <section layout vertical>
+
+        <div class="top" hero-id="programm-front" hero flex layout horizontal >
+		<core-icon-button style="top: 10px; left: 10px; position: absolute;" icon="arrow-back" on-tap="{{transition}}"></core-icon-button>
+          <div class="top-image" cross-fade>
+			КРАТКАЯ ПРОГРАММА
+			17 декабря
+			00:19 - выезд с Винницы, поезд “Киев-Ивано-Франковск”
+			09:37 - приезд в Ивано-Франковск. Пересаживаемся на 3 автобуса, добираемся до Буковеля. Ехать около 2 часов.
+			12:00 - 13:00 - поздний завтрак возле Жилищной резиденции №1 в Буковеле, презентация “потоков” по обучению, вступительное слово Директора
+			13:00 -13:30 - поселение в домики комплекса “Буковель”
+			13:30 - 16:30 - катание / свободное время
+			16:30 - 17:30 - душ, переодеваемся
+			18:00 - 18:30 - ужин, паб “Кухель”
+			19:00 - 22:00 -работа по потокам
+			Поток 1. “Development”: отделы разработки. Конкурсное задание, работа в парах. Конференц-зал в отеле “Radisson Blu”.
+			Поток 2. “Product”: ПМы, ассистенты, дизайнер интерфейсов, маркетинг, тестировщики, бухгалтерия. Групповое задание.  Конференц-зал в отеле “Radisson Blu”.
+			Поток 3. “Sales”: Отделы продаж, нацреклама, Sales House, Отдел заботы о пользователях. Кейсы, работа в группах. Конференц-зал в отеле “Ганс”.
+			Поток 4. “Журнал”: Дима Кривда, верстальщики, редакция. Работа в команде. Конференц-зал в отеле “Radisson Blu”.
+			22:30 - … - свободное время
+
+			18 декабря
+			08:00 - 11:00 -завтрак в этно-кафе  “Козачок”, завтрак-фуршет (завтракать можно в период с 8:00 до 11:00)
+			10:00 - 16:30 - катание / свободное время
+			16:30 - 17:30 - душ, переодеваемся
+			18:00 - 18:30 - ужин, паб “Кухель”
+			19:00 - 22:00 - обучение по потокам
+			Поток 1. “Development”: отделы разработки, верстка. Тренинг “Автоматизация процесса верстки. Методологии верстки. Адаптивность”. Тренер - Юрий Артюх. Конференц-зал в отеле “Ганс”.
+			Поток 2. “Product”: ПМы, ассистенты, дизайнер интерфейсов, маркетинг, тестировщики, бухгалтерия, редакция. Кейсовая программа "Лабіринти конфліктів в бізнесі: формула розв'язання за методологією Адізеса". Тренер - Владимир Павелко.   Конференц-зал в отеле “Radisson Blu”.
+			Поток 3. “Sales”: Отделы продаж, нацреклама, Sales House, Отдел заботы о пользователях. Кейсовая программа “Иррациональное поведение клиента: мотивы и принятия решений”. Тренер - Алексей Светличный. Конференц-зал в отеле “Буко”.
+			22:30 - … - свободное время
+
+			19 декабря
+			08:00 - 11:00 - завтрак в этно-кафе  “Козачок”, завтрак-фуршет (завтракать можно в период с 8:00 до 11:00)
+			10:00 - 17:00 - катание / свободное время
+			12:00 - 17:00 - визит в детский дом в с. Микуличин
+			17:00 - 20:00 - собираем вещи, готовимся к гала-ужину
+			20:00 - 01:00 - гала-ужин, РЦ “Бука”
+			презентация результатов работы по потокам
+			презентация планов на 2015 год
+			развлекательно-музыкальная часть
+			фото-сессия в гуцульском стиле
+			дискотека
+
+			20 декабря
+			08:00 - 11:00 - завтрак в этно-кафе  “Козачок”, завтрак-фуршет (завтракать можно в период с 8:00 до 11:00)
+			11:00 - 12:00 -выселение
+			12:00 - отъезд автобусами в Ивано-Франковск
+			14:00 - 16:30 - обед, свободное время, гуляем по Ивано-Франковску
+			17:00 - отправление поезда 134 “Ивано-Франковск - Киев”.
+
+			<a href="https://docs.google.com/a/ria.com/spreadsheets/d/1PlZGdfi4jIjQ4zMRippvwZzQVM2Xb_gzDrfSqbdXZ70/edit#gid=0">Список, кто катается и количество ски-пасов.</a>
+
+		  </div>
+        </div>
+		
+        <div class="bottom" hero-id="footer" hero cross-fade>
+          <span cross-fade>General Knowledge</span>
+        </div>
+        <div class="fab fab-0" hero-id="fab" hero>
+          <paper-fab icon="av:play-arrow" on-tap="{{transition}}" hero></paper-fab>
+        </div>
+		
+		
+		
+		<div class="top" hero-id="drive-front" hero flex layout horizontal >
+		<core-icon-button icon="arrow-back" on-tap="{{transition}}"></core-icon-button>
+          <div class="top-image" cross-fade>
+			КРАТКАЯ
+			17 декабря
+			00:19 - выезд с Винницы, поезд “Киев-Ивано-Франковск”
+			09:37 - приезд в Ивано-Франковск. Пересаживаемся на 3 автобуса, добираемся до Буковеля. Ехать около 2 часов.
+			12:00 - 13:00 - поздний завтрак возле Жилищной резиденции №1 в Буковеле, презентация “потоков” по обучению, вступительное слово Директора
+			13:00 -13:30 - поселение в домики комплекса “Буковель”
+			13:30 - 16:30 - катание / свободное время
+			16:30 - 17:30 - душ, переодеваемся
+			18:00 - 18:30 - ужин, паб “Кухель”
+			19:00 - 22:00 -работа по потокам
+			Поток 1. “Development”: отделы разработки. Конкурсное задание, работа в парах. Конференц-зал в отеле “Radisson Blu”.
+			Поток 2. “Product”: ПМы, ассистенты, дизайнер интерфейсов, маркетинг, тестировщики, бухгалтерия. Групповое задание.  Конференц-зал в отеле “Radisson Blu”.
+			Поток 3. “Sales”: Отделы продаж, нацреклама, Sales House, Отдел заботы о пользователях. Кейсы, работа в группах. Конференц-зал в отеле “Ганс”.
+			Поток 4. “Журнал”: Дима Кривда, верстальщики, редакция. Работа в команде. Конференц-зал в отеле “Radisson Blu”.
+			22:30 - … - свободное время
+
+			
+		  </div>
+        </div>
+		
+		
+		
+		
+		</section>
+		
+			
+		</core-animated-pages>
+    </template>
+	
+	    <style>
+        html,body {
+            height: 100%;
+            margin: 0;
+            background-color: #E5E5E5;
+            font-family: RobotoDraft, sans-serif;
+            font-size: 15px;
+        }
+    </style>
+    <script>
+	Polymer('board-global', {
+
+      page: 0,
+
+      transition: function(e) {
+		var el = e.target;
+		console.log(el)
+        if (this.page === 1) {
+          this.page = 0;
+        } else {
+          this.page += 1;
+        }
+      }
+    });
+    </script>
+</polymer-element>

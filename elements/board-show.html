@@ -4,10 +4,23 @@
       href="../bower_components/core-toolbar/core-toolbar.html">
 
 <link rel="import" href="front-programm.html">
+<link rel="import" href="front-passage.html">
+<link rel="import" href="front-accomodation.html">
+<link rel="import" href="front-knowledge.html">
+<link rel="import" href="front-drive.html">
+<link rel="import" href="front-matras.html">
+<link rel="import" href="board-global.html">
 
-<polymer-element name="board-show">
+<polymer-element name="board-show" extends="board-global">
     <template>
-        <front-programm id="category" name="category" category="{{category}}" wide="true" vertical="" layout="" class="core-selected" active=""></front-programm>
+		<section layout vertical>
+        <front-programm hero-id="category-image" hero flex layout horizontal center center-justified id="category" name="category" category="{{category}}" wide="true" vertical="" layout="" class="core-selected" active=""></front-programm>
+        </section>
+		<front-passage id="category" name="category" category="{{category}}" wide="true" vertical="" layout="" class="core-selected" active=""></front-passage>
+        <front-accomodation id="category" name="category" category="{{category}}" wide="true" vertical="" layout="" class="core-selected" active=""></front-accomodation>
+        <front-knowledge id="category" name="category" category="{{category}}" wide="true" vertical="" layout="" class="core-selected" active=""></front-drive>
+        <front-drive id="category" name="category" category="{{category}}" wide="true" vertical="" layout="" class="core-selected" active=""></front-drive>
+        <front-matras id="category" name="category" category="{{category}}" wide="true" vertical="" layout="" class="core-selected" active=""></front-matras>
     </template>
     <script>
         Polymer({});

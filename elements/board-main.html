@@ -1,3 +1,5 @@
+
+
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../bower_components/core-icon/core-icon.html">
@@ -5,12 +7,19 @@
 
 <link rel="import"
       href="../bower_components/core-toolbar/core-toolbar.html">
+	  
+	  <link href="../bower_components/core-icons/av-icons.html" rel="import">
 
 <link rel="import" href="board-pin.html">
 
-<polymer-element name="board-main" noscript>
+
+<polymer-element name="board-main" attributes="page" unresolved>
     <template>
         <style>
+		  [unresolved] {
+			opacity: 0;
+			/* other custom styles for unresolved elements */
+		  }
             core-header-panel {
                 height: 100%;
                 overflow: auto;
@@ -109,12 +118,23 @@
             .pin-layout .title {
                 background-color: aliceblue;
                 text-align: center;
+				opacity: 0.8;
             }
+			
+			board-pin {
+				transition: box-shadow 0.4s;
+			}
+			
+			board-pin:hover {
+				z-index: 1;
+				
+                box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+			}
 
         </style>
 
 
-
+		<section layout vertical>
         <div class="categories-panel" flex="" auto="">
 
             <core-toolbar class="category-toolbar">
@@ -131,8 +151,8 @@
 
 
 
-
-                    <board-pin class="programm">
+					
+                    <board-pin self-stretch class="programm" hero-id="category-image" hero style="background-color:#ffff8d;" layout vertical on-tap="{{transition}}">
                         <!--img width="70" height="70"
                              src="../images/avatar-07.svg"-->
                         <div vertical layout class="pin-layout">
@@ -198,7 +218,7 @@
 
             </core-selector>
         </div>
-
+		</section>
     </template>
     <style>
         html,body {
@@ -209,5 +229,7 @@
             font-size: 15px;
         }
     </style>
-
+    <script>
+        Polymer({});
+    </script>
 </polymer-element>
